@@ -1,0 +1,197 @@
+
+------------------------------------------------
+Camera resolution: 1280x720
+Click detector initialized - ROI: 426x240 at (427, 240)
+Warming up DepthNet...
+DepthNet warmup completed in 12958.7ms
+
+Starting DepthNet click detector (Target FPS: 30)
+Push your hand forward in the center of the screen to click
+Press Ctrl+C to exit
+
+[gstreamer] opening gstCamera for streaming, transitioning pipeline to GST_STATE_PLAYING
+[gstreamer] gstreamer changed state from NULL to READY ==> mysink
+[gstreamer] gstreamer changed state from NULL to READY ==> capsfilter1
+[gstreamer] gstreamer changed state from NULL to READY ==> decoder
+[gstreamer] gstreamer changed state from NULL to READY ==> capsfilter0
+[gstreamer] gstreamer changed state from NULL to READY ==> v4l2src0
+[gstreamer] gstreamer changed state from NULL to READY ==> pipeline0
+[gstreamer] gstreamer changed state from READY to PAUSED ==> capsfilter1
+[gstreamer] gstreamer changed state from READY to PAUSED ==> decoder
+[gstreamer] gstreamer changed state from READY to PAUSED ==> capsfilter0
+[gstreamer] gstreamer stream status CREATE ==> src
+[gstreamer] gstreamer changed state from READY to PAUSED ==> v4l2src0
+[gstreamer] gstreamer changed state from READY to PAUSED ==> pipeline0
+[gstreamer] gstreamer stream status ENTER ==> src
+[gstreamer] gstreamer message new-clock ==> pipeline0
+[gstreamer] gstreamer changed state from PAUSED to PLAYING ==> capsfilter1
+[gstreamer] gstreamer changed state from PAUSED to PLAYING ==> decoder
+[gstreamer] gstreamer changed state from PAUSED to PLAYING ==> capsfilter0
+[gstreamer] gstreamer changed state from PAUSED to PLAYING ==> v4l2src0
+[gstreamer] gstCamera::Capture() -- a timeout occurred waiting for the next image buffer
+[gstreamer] gstCamera -- onPreroll
+[gstreamer] gstBufferManager -- map buffer size was less than max size (1382400 vs 1382407)
+[gstreamer] gstBufferManager recieve caps:  video/x-raw, format=(string)I420, width=(int)1280, height=(int)720, interlace-mode=(string)progressive, multiview-mode=(string)mono, multiview-flags=(GstVideoMultiviewFlagsSet)0:ffffffff:/right-view-first/left-flipped/left-flopped/right-flipped/right-flopped/half-aspect/mixed-mono, pixel-aspect-ratio=(fraction)1/1, chroma-site=(string)mpeg2, colorimetry=(string)1:4:0:0, framerate=(fraction)30/1
+[gstreamer] gstBufferManager -- recieved first frame, codec=MJPEG format=i420 width=1280 height=720 size=1382407
+Failed to capture frame
+[cuda]   allocated 4 ring buffers (1382407 bytes each, 5529628 bytes total)
+[cuda]   allocated 4 ring buffers (8 bytes each, 32 bytes total)
+[gstreamer] gstreamer message stream-start ==> pipeline0
+[gstreamer] gstreamer changed state from READY to PAUSED ==> mysink
+[gstreamer] gstreamer message async-done ==> pipeline0
+[gstreamer] gstreamer changed state from PAUSED to PLAYING ==> mysink
+[gstreamer] gstreamer changed state from PAUSED to PLAYING ==> pipeline0
+[gstreamer] gstreamer message qos ==> v4l2src0
+[cuda]   allocated 4 ring buffers (2764800 bytes each, 11059200 bytes total)
+[OpenGL] glDisplay -- set the window size to 1280x720
+[OpenGL] creating 1280x720 texture (GL_RGB8 format, 2764800 bytes)
+[cuda]   registered openGL texture for interop access (1280x720, GL_RGB8, 2764800 bytes)
+[cuda]   allocated 2 ring buffers (1382400 bytes each, 2764800 bytes total)
+[gstreamer] gstEncoder -- starting pipeline, transitioning to GST_STATE_PLAYING
+[gstreamer] gstreamer changed state from NULL to READY ==> fakesink0
+[gstreamer] gstreamer changed state from NULL to READY ==> queue0
+[gstreamer] gstreamer changed state from NULL to READY ==> videotee
+[gstreamer] gstreamer changed state from NULL to READY ==> capsfilter3
+[gstreamer] gstreamer changed state from NULL to READY ==> rtph264pay0
+[gstreamer] gstreamer changed state from NULL to READY ==> capsfilter2
+[gstreamer] gstreamer changed state from NULL to READY ==> encoder
+[gstreamer] gstreamer changed state from NULL to READY ==> mysource
+[gstreamer] gstreamer changed state from NULL to READY ==> pipeline1
+[gstreamer] gstreamer stream status CREATE ==> src
+[gstreamer] gstreamer changed state from READY to PAUSED ==> queue0
+[gstreamer] gstreamer changed state from READY to PAUSED ==> videotee
+[gstreamer] gstreamer changed state from READY to PAUSED ==> capsfilter3
+[gstreamer] gstreamer stream status ENTER ==> src
+[gstreamer] gstreamer changed state from READY to PAUSED ==> rtph264pay0
+[gstreamer] gstreamer changed state from READY to PAUSED ==> capsfilter2
+[gstreamer] gstreamer changed state from READY to PAUSED ==> encoder
+[gstreamer] gstreamer stream status CREATE ==> src
+[gstreamer] gstreamer changed state from READY to PAUSED ==> mysource
+[gstreamer] gstreamer changed state from READY to PAUSED ==> pipeline1
+[gstreamer] gstreamer stream status ENTER ==> src
+[gstreamer] gstreamer message new-clock ==> pipeline1
+[gstreamer] gstreamer changed state from PAUSED to PLAYING ==> queue0
+[gstreamer] gstreamer changed state from PAUSED to PLAYING ==> videotee
+[gstreamer] gstreamer changed state from PAUSED to PLAYING ==> capsfilter3
+[gstreamer] gstreamer changed state from PAUSED to PLAYING ==> rtph264pay0
+[gstreamer] gstreamer changed state from PAUSED to PLAYING ==> capsfilter2
+[gstreamer] gstreamer changed state from PAUSED to PLAYING ==> encoder
+[gstreamer] gstreamer changed state from PAUSED to PLAYING ==> mysource
+[gstreamer] gstEncoder -- new caps: video/x-raw, width=1280, height=720, format=(string)I420, framerate=30/1
+Framerate set to : 30 at NvxVideoEncoderSetParameterNvMMLiteOpen : Block : BlockType = 4 
+===== NVMEDIA: NVENC =====
+NvMMLiteBlockCreate : Block : BlockType = 4 
+FPS: 0.5 | Process time (ms): avg=3437.1, min=3437.1, max=3437.1 | Clicks: 0 | Skips: 0
+H264: Profile = 66, Level = 40 
+NVMEDIA_ENC: bBlitMode is set to TRUE 
+[gstreamer] gstreamer stream status CREATE ==> src
+[gstreamer] gstreamer stream status ENTER ==> src
+[gstreamer] gstreamer message stream-start ==> pipeline1
+[gstreamer] gstreamer changed state from READY to PAUSED ==> fakesink0
+[gstreamer] gstreamer message async-done ==> pipeline1
+[gstreamer] gstreamer changed state from PAUSED to PLAYING ==> fakesink0
+[gstreamer] gstreamer changed state from PAUSED to PLAYING ==> pipeline1
+FPS: 5.0 | Process time (ms): avg=442.1, min=24.0, max=3437.1 | Clicks: 0 | Skips: 3
+FPS: 17.0 | Process time (ms): avg=125.0, min=20.8, max=3437.1 | Clicks: 0 | Skips: 3
+FPS: 16.5 | Process time (ms): avg=23.1, min=20.6, max=28.4 | Clicks: 0 | Skips: 0
+FPS: 17.0 | Process time (ms): avg=23.6, min=20.6, max=28.4 | Clicks: 0 | Skips: 0
+FPS: 17.0 | Process time (ms): avg=23.3, min=21.4, max=25.5 | Clicks: 0 | Skips: 0
+FPS: 17.0 | Process time (ms): avg=23.1, min=21.0, max=26.4 | Clicks: 0 | Skips: 0
+FPS: 17.0 | Process time (ms): avg=23.3, min=21.0, max=26.4 | Clicks: 0 | Skips: 0
+FPS: 17.0 | Process time (ms): avg=23.3, min=21.1, max=25.1 | Clicks: 0 | Skips: 0
+FPS: 16.0 | Process time (ms): avg=22.8, min=19.3, max=25.9 | Clicks: 0 | Skips: 0
+FPS: 17.0 | Process time (ms): avg=22.5, min=19.3, max=26.5 | Clicks: 0 | Skips: 0
+FPS: 17.0 | Process time (ms): avg=23.2, min=20.0, max=26.5 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=22.7, min=19.9, max=26.5 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=21.8, min=19.4, max=26.5 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=21.8, min=19.4, max=25.0 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=22.0, min=19.6, max=25.4 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=22.3, min=19.9, max=26.0 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=22.3, min=19.7, max=26.0 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=21.9, min=19.1, max=24.8 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=21.9, min=19.1, max=24.8 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=22.0, min=19.5, max=26.1 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=21.7, min=19.5, max=26.1 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=21.6, min=19.3, max=23.9 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=21.6, min=19.3, max=23.9 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=21.4, min=19.6, max=23.6 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=21.2, min=18.8, max=25.6 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=21.0, min=18.7, max=25.6 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=21.1, min=18.7, max=24.5 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=21.3, min=19.4, max=24.2 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=21.7, min=19.5, max=26.7 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=21.8, min=19.4, max=26.7 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=21.5, min=19.4, max=23.8 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=22.0, min=19.6, max=25.9 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=22.9, min=19.8, max=26.1 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=23.2, min=20.4, max=27.5 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=23.6, min=20.4, max=29.9 | Clicks: 0 | Skips: 0
+FPS: 13.5 | Process time (ms): avg=23.9, min=21.0, max=29.9 | Clicks: 0 | Skips: 0
+FPS: 15.5 | Process time (ms): avg=22.8, min=19.7, max=28.0 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=22.3, min=19.7, max=26.1 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=22.7, min=20.3, max=28.6 | Clicks: 0 | Skips: 0
+FPS: 14.5 | Process time (ms): avg=22.8, min=20.3, max=30.0 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=22.8, min=20.3, max=30.5 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=22.1, min=19.9, max=30.5 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=22.0, min=19.9, max=26.1 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=22.5, min=19.8, max=33.2 | Clicks: 0 | Skips: 0
+FPS: 14.5 | Process time (ms): avg=23.1, min=19.8, max=33.2 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=23.0, min=20.2, max=33.2 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=22.0, min=20.3, max=25.6 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=21.9, min=20.4, max=25.6 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=21.7, min=19.7, max=24.4 | Clicks: 0 | Skips: 0
+FPS: 14.0 | Process time (ms): avg=22.5, min=19.7, max=28.3 | Clicks: 0 | Skips: 0
+FPS: 14.5 | Process time (ms): avg=23.5, min=20.0, max=39.3 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=23.1, min=20.2, max=39.3 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=22.3, min=20.2, max=26.5 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=22.2, min=20.2, max=25.5 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=22.5, min=20.2, max=26.4 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=22.5, min=20.4, max=26.4 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=22.0, min=20.0, max=24.7 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=22.0, min=19.8, max=24.6 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=22.2, min=19.8, max=24.6 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=22.3, min=20.2, max=25.4 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=22.7, min=20.2, max=26.8 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=22.6, min=19.8, max=26.8 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=21.4, min=19.5, max=26.5 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=21.5, min=19.5, max=25.2 | Clicks: 0 | Skips: 0
+FPS: 14.5 | Process time (ms): avg=22.4, min=20.2, max=28.8 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=22.4, min=20.0, max=28.8 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=22.6, min=20.0, max=26.1 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=22.5, min=19.9, max=26.1 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=21.8, min=19.9, max=24.7 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=21.9, min=19.9, max=23.7 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=22.1, min=19.8, max=25.0 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=21.7, min=19.6, max=26.2 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=21.3, min=19.1, max=26.2 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=21.8, min=19.1, max=25.6 | Clicks: 0 | Skips: 0
+FPS: 12.5 | Process time (ms): avg=27.7, min=19.1, max=76.0 | Clicks: 0 | Skips: 3
+FPS: 15.5 | Process time (ms): avg=30.1, min=20.3, max=76.0 | Clicks: 0 | Skips: 3
+FPS: 15.0 | Process time (ms): avg=23.9, min=20.3, max=33.3 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=22.0, min=20.2, max=25.8 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=21.9, min=20.2, max=25.9 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=21.8, min=19.8, max=26.1 | Clicks: 0 | Skips: 0
+FPS: 15.5 | Process time (ms): avg=21.6, min=19.8, max=24.6 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=21.7, min=19.7, max=24.6 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=21.5, min=19.7, max=24.4 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=21.6, min=19.9, max=23.7 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=21.9, min=20.2, max=24.6 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=21.8, min=19.9, max=24.6 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=21.6, min=19.9, max=24.4 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=21.8, min=19.7, max=25.8 | Clicks: 0 | Skips: 0
+FPS: 12.0 | Process time (ms): avg=23.3, min=19.7, max=38.4 | Clicks: 0 | Skips: 0
+FPS: 15.5 | Process time (ms): avg=23.6, min=20.2, max=38.4 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=22.4, min=20.2, max=26.7 | Clicks: 0 | Skips: 0
+FPS: 15.0 | Process time (ms): avg=22.5, min=20.4, max=26.7 | Clicks: 0 | Skips: 0
+^C
+
+Shutting down gracefully...
+Output stream closed
+[gstreamer] gstCamera -- stopping pipeline, transitioning to GST_STATE_NULL
+^C[gstreamer] gstCamera -- pipeline stopped
+Total clicks detected: 0
+Cleanup completed
+[gstreamer] gstEncoder -- shutting down pipeline, sending EOS
+[gstreamer] gstEncoder -- transitioning pipeline to GST_STATE_NULL
+[gstreamer] gstEncoder -- pipeline stopped
+
