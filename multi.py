@@ -8,7 +8,8 @@ from jetson_inference import depthNet, poseNet
 from jetson_utils import videoSource, cudaAllocMapped, cudaToNumpy, cudaFromNumpy, cudaMemcpy
 
 # Constants
-NUM_WORKERS = 4
+NUM_WORKERS = 3
+ENABLE_RECORDING = False
 
 # Global lock to prevent concurrent initialization
 init_lock = threading.Lock()
@@ -94,25 +95,45 @@ class WorkerThread:
                 
                 completion_time = time.perf_counter()
                 
-                # Create processed frame object
-                processed_frame = ProcessedFrame(
-                    frame=frame,
-                    poses=poses,
-                    finger_tip=(x, y),
-                    depth_value=depth_value,
-                    completion_time=completion_time,
-                    thread_id=self.thread_id
-                )
+                if ENABLE_RECORDING:
+                    # Create processed frame object
+                    processed_frame = ProcessedFrame(
+                        frame=frame,
+                        poses=poses,
+                        finger_tip=(x, y),
+                        depth_value=depth_value,
+                        completion_time=completion_time,
+                        thread_id=self.thread_id
+                    )
                 
-                # Add to central array with thread-safe access
-                with frames_lock:
-                    processed_frames.append(processed_frame)
-                    # Sort by completion time to maintain chronological order
-                    processed_frames.sort(key=lambda pf: pf.completion_time)
-                    
-                    # Optional: Limit array size to prevent memory issues
-                    # if len(processed_frames) > 100:  # Keep last 100 frames
-                    #     processed_frames.pop(0)
+                    # Add to central array with thread-safe access
+                    with frames_lock:
+                        processed_frames.append(processed_frame)
+                        # Sort by completion time to maintain chronological order
+                        processed_frames.sort(key=lambda pf: pf.completion_time)
+                        
+                        # Optional: Limit array size to prevent memory issues
+                        # if len(processed_frames) > 100:  # Keep last 100 frames
+                        #     processed_frames.pop(0)
+                else:
+                    # Create processed frame object
+                    processed_frame = ProcessedFrame(
+                        poses=poses,
+                        finger_tip=(x, y),
+                        depth_value=depth_value,
+                        completion_time=completion_time,
+                        thread_id=self.thread_id
+                    )
+                
+                    # Add to central array with thread-safe access
+                    with frames_lock:
+                        processed_frames.append(processed_frame)
+                        # Sort by completion time to maintain chronological order
+                        processed_frames.sort(key=lambda pf: pf.completion_time)
+                        
+                        # Optional: Limit array size to prevent memory issues
+                        # if len(processed_frames) > 100:  # Keep last 100 frames
+                        #     processed_frames.pop(0)
                 
                 print(f"{self.thread_id} took {pose_time:.4f} seconds to pose. Finger tip at ({x}, {y})")
                 if finger_tip:
@@ -199,12 +220,14 @@ class MainProcessor:
         if not frame:
             return False
             
-        # Create a copy of the frame for processing
-        frame_copy = cudaAllocMapped(width=frame.width, 
-                                   height=frame.height, 
-                                   format=frame.format)
-        # Copy the data
-        cudaMemcpy(frame_copy, frame)
+        # # Create a copy of the frame for processing
+        # frame_copy = cudaAllocMapped(width=frame.width, 
+        #                            height=frame.height, 
+        #                            format=frame.format)
+        # # Copy the data
+        # cudaMemcpy(frame_copy, frame)
+        
+        frame = frame_copy
         
         # Find a free worker thread
         free_worker = None
@@ -216,7 +239,7 @@ class MainProcessor:
         try:
             if free_worker:
                 # Send frame to worker thread
-                if free_worker.process_frame(frame_copy):
+                if free_worker.process_frame(frame):
                     print(f"Frame queued to worker {free_worker.thread_id}")
                     return True
                 else:
@@ -268,8 +291,9 @@ class MainProcessor:
         self.running = False
         
         # Render processed frames to video
-        print("Rendering processed frames to video...")
-        render_frames_to_video("pose_detection_output.mp4", base_fps=30)
+        if ENABLE_RECORDING:
+            print("Rendering processed frames to video...")
+            render_frames_to_video("pose_detection_output.mp4", base_fps=30)
         
         # Save frame metadata
         save_frame_metadata("pose_detection_metadata.txt")
