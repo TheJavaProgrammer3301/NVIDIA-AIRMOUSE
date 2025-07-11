@@ -68,8 +68,8 @@ class GestureClickDetector:
         
         # Click detection parameters
         self.click_mode = click_mode  # "pinch", "fist", or "both"
-        self.click_cooldown = 0
-        self.click_cooldown_frames = 15
+        # self.click_cooldown = 0
+        # self.click_cooldown_frames = 15
         
         # Gesture thresholds
         self.pinch_threshold = 80  # pixels
@@ -161,9 +161,9 @@ class GestureClickDetector:
     
     def detect_click(self, pose) -> Tuple[bool, str]:
         """Main click detection method"""
-        if self.click_cooldown > 0:
-            self.click_cooldown -= 1
-            return False, ""
+        # if self.click_cooldown > 0:
+        #     self.click_cooldown -= 1
+        #     return False, ""
         
         if not pose or not pose.Keypoints:
             return False, ""
@@ -198,7 +198,7 @@ class GestureClickDetector:
             # Detect gesture onset (transition from no gesture to gesture)
             if not self.last_gesture_state and all(recent_gestures):
                 self.last_gesture_state = True
-                self.click_cooldown = self.click_cooldown_frames
+                # self.click_cooldown = self.click_cooldown_frames
                 return True, gesture_type
             elif self.last_gesture_state and not any(recent_gestures[-2:]):
                 self.last_gesture_state = False
@@ -231,6 +231,7 @@ class MouseController:
         self.center_mouse()
         
         self.POSITION_MULTIPLIER = 1.5
+        self.clicking = False
     
     def center_mouse(self):
         """Center the mouse cursor on screen"""
@@ -278,11 +279,20 @@ class MouseController:
         
         # return True
     
-    def perform_click(self, gesture_type: str = ""):
+    def set_clicking(self, clicking: bool, gesture_type: str = ""):
         """Execute mouse click"""
         try:
-            pyautogui.click()
-            print(f"CLICK! ({gesture_type})")
+            clicking_changed = clicking != self.clicking
+            
+            if clicking_changed:
+                if clicking:
+                    pyautogui.mouseDown()
+                else:
+                    pyautogui.mouseUp()
+                
+				self.clicking = clicking
+    
+            	print(f"CLICK: {clicking} ({gesture_type})")
         except Exception as e:
             print(f"Click failed: {e}")
             
@@ -295,8 +305,7 @@ class MouseController:
             
         self.update_mouse_position(self.finger_x, self.finger_y)
         
-        if clicked:
-            self.perform_click()
+        self.set_clicking(clicked)
 
 class PinchFistHandTracker:
     def __init__(self, target_fps: int = 60, click_mode: str = "pinch"):
