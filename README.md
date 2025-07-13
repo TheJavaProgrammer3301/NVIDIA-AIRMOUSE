@@ -1,8 +1,6 @@
 # NVIDIA AIRMOUSE
 NVIDIA AIRMOUSE allows you to control your mouse when you don't feel like holding it or sitting down at your desk. Launch the program, then move your hand around to control the cursor. Make a fist to start clicking, and release the fist to stop.
 
-![Beautiful art created with NVIDIA AIRMOUSE](https://github.com/TheJavaProgrammer3301/NVIDIA-AIRMOUSE/blob/main/public/art1.png)
-
 ## Behind the scenes
 AIRMOUSE uses `PoseNet` for both movement control and gesture detection. We use `pyautogui` to move the cursor based on the input we get.
 
@@ -38,6 +36,6 @@ Press space to pause/unpause.**
 sudo python3 main.py --frequency=30 --multiplier=2 --keypoint=0 --click-threshold=3 --overlay=false
 ```
 
-## submission notes for me
-[google form](https://docs.google.com/forms/d/e/1FAIpQLSew2LtbMg-7DMgRmBtkkYwvQoPL6qQJdQjGq0j4buDRN8y0_Q/viewform)
-[submission info](https://student.idtech.com/courses/331)
+### Examples
+## Beautiful art made with NVIDIA AIRMOUSE
+![art1.png](https://github.com/TheJavaProgrammer3301/NVIDIA-AIRMOUSE/blob/main/public/art1.png)
