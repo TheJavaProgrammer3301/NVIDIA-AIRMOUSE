@@ -33,7 +33,7 @@ The parameters shown are defaults.
 **Press enter to stop the program.
 Press space to pause/unpause.**
 ```bash
-sudo python3 main.py --frequency=30 --multiplier=2 --keypoint=0 --click-threshold=3 --overlay=false
+sudo python3 main.py --frequency=30 --multiplier=2 --keypoint=0 --click-threshold=3
 ```
 
 ### Examples
