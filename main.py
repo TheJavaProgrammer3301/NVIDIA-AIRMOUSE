@@ -42,7 +42,7 @@ parser = argparse.ArgumentParser(description="Control your mouse with your hand"
 # based on jetson inference posenet example
 parser.add_argument("--frequency", type=float, default=30, help="update frequency for the mouse (default: 30 fps)")
 parser.add_argument("--multiplier", type=float, default=2, help="multiplier for finger position relative to center of camera (default: 2)")
-parser.add_argument("--keypoint", type=int, default=2, help="keypoint to track (2 for wrist, 8 for index finger tip, etc.)\nvalid values are: 0-20 (see HandKeypoints class for details)")
+parser.add_argument("--keypoint", type=int, default=0, help="keypoint to track (0 for wrist, 8 for index finger tip, etc.)\nvalid values are: 0-20 (see HandKeypoints class for details)")
 parser.add_argument("--click-threshold", type=int, default=3, help="number of sequential frames where a click gesture is detected for a change in clicking to occur (default: 3)")
 parser.add_argument("--overlay", type=bool, default=False, help="whether to enable overlay (default: false)")
 
@@ -243,10 +243,9 @@ class MouseController:
         self.center_y = camera_height // 2
         
         # # Mouse movement parameters
-        # self.smooth_factor = 0.4
-        # self.prev_x = screen_width // 2
-        # self.prev_y = screen_height // 2
-        # self.movement_threshold = 5
+        self.smooth_factor = 0.4
+        self.prev_x = screen_width // 2
+        self.prev_y = screen_height // 2
         
         self.pos_x = self.center_x
         self.pos_y = self.center_y
