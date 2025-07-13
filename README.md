@@ -39,4 +39,4 @@ sudo python3 main.py --frequency=30 --multiplier=2 --keypoint=0 --click-threshol
 ### Examples
 ## Beautiful art made with NVIDIA AIRMOUSE
 ![art1.png](https://github.com/TheJavaProgrammer3301/NVIDIA-AIRMOUSE/blob/main/public/art1.png)
-![demo video](https://youtu.be/1kD5mMODSMg)
+[![demo video](https://img.youtube.com/vi/1kD5mMODSMg/0.jpg)](https://www.youtube.com/watch?v=1kD5mMODSMg)
